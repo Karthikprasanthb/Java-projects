@@ -1,0 +1,238 @@
+import java.util.Scanner;
+ abstract class Bank
+{ 
+	 double balance;
+	 abstract void withdraw(double amount); 
+	 abstract void deposit(double amount );
+	 
+	 public void checkBalance()
+	 {
+	 System.out.println("Balance available is "+balance);
+	 }
+}
+ class SBI extends Bank
+ {
+	 @Override
+	 public void withdraw(double amount )
+	 {
+		 if(amount<=balance)
+		 {
+			 if(amount%500==0 && amount>0)
+			 {
+				 double updated_balance=balance-amount;
+				 balance=updated_balance;
+				 System.out.println("withdraw amount successfully "+amount+"updated balance is "+updated_balance);
+			 }
+			 else
+			 {
+				 System.out.println("Invalid amount");
+				 
+			 }
+		 }
+		 else
+			 {
+				 System.out.println("Insufficient balance please depodit the amount");
+			 }
+		 }
+	 @Override
+	 public void deposit(double amount)
+	 {
+		if(amount<=4000 && amount >0) 
+		{
+			double updated_balance=balance+amount;
+			balance=updated_balance;
+			System.out.println("Deposit successfull of"+amount+"updated balance is "+updated_balance);
+		}
+		else
+		{
+			System.out.println("Invalid amount please deposit again");
+		}
+	 }
+  }
+ class HDFC extends Bank
+ {
+@Override
+ public void withdraw(double amount)
+ {
+	 if(amount<=balance)
+	 {
+		 if(amount>0 && amount%1000==0)
+		 {
+			 double updated_balance=balance-amount;
+			 balance=updated_balance;
+			 System.out.println("withdraw amount successfully "+amount+"updated balance is "+updated_balance);
+		 }
+		 else
+		 {
+			 System.out.println("Invalid amount");
+			 
+		 }
+	 }
+	 else
+		 {
+			 System.out.println("Insufficient balance please depodit the amount");
+		 }
+	 }
+@Override
+public void deposit(double amount)
+{
+	if(amount>0 && amount<=5000) 
+	{
+		double updated_balance=balance+amount;
+		balance=updated_balance;
+		System.out.println("Deposit successfull of"+amount+"updated balance is "+updated_balance);
+	}
+	else
+	{
+		System.out.println("Invalid amount please deposit again");
+	}
+  }
+}
+ class Axis extends Bank
+ {
+@Override
+ public void withdraw(double amount)
+ {
+	 if(amount<=balance)
+	 {
+		 if(amount>0 && amount%100==0)
+		 {
+			 double updated_balance=balance-amount;
+			 balance=updated_balance;
+			 System.out.println("withdraw amount successfully "+amount+"updated balance is "+updated_balance);
+		 }
+		 else
+		 {
+			 System.out.println("Invalid amount");
+			 
+		 }
+	 }
+	 else
+		 {
+			 System.out.println("Insufficient balance please depodit the amount");
+		 }
+	 }
+@Override
+public void deposit(double amount)
+{
+	if(amount>0 && amount<=10000) 
+	{
+		double updated_balance=balance+amount;
+		balance=updated_balance;
+		System.out.println("Deposit successfull of "+amount+ " updated balance is "+updated_balance);
+	}
+	else
+	{
+		System.out.println("Invalid amount please deposit again");
+	}
+  }
+}
+class BankDriver
+ {
+	 public static void main(String[] args) 
+	 {
+		Scanner in=new Scanner(System.in);
+		SBI S=new SBI();
+		HDFC H=new HDFC();
+		Axis A=new Axis();
+		
+		while(true)
+		{
+			System.out.println("*****WELCOME TO BANK*****");
+			System.out.println("Please choose from below bank");
+			System.out.println("1.SBI");
+			System.out.println("2.HDFC");
+			System.out.println("3.Axis");
+			int choice=in.nextInt();
+			if(choice==1)
+			{
+				System.out.println("1.withdraw");
+				System.out.println("2.deposit");
+				System.out.println("3.check Balance");
+				System.out.println("Please chose from above option");
+				int ch=in.nextInt();
+				if(ch==1)
+				{
+					System.out.println("How much amount want to withdraw");
+					double amount=in.nextDouble();
+					S.withdraw(amount);
+				}
+				else if(ch==2)
+				{
+					System.out.println("How much amount want to deposit");
+					double amount=in.nextDouble();
+					S.deposit(amount);
+				}
+				else if(ch==3)
+				{
+					S.checkBalance();
+				}
+				else
+				{
+					System.out.println("Invalid option please chose from 1-2");
+			
+	            }
+			}
+			else if(choice==2)
+			{
+				System.out.println("1.withdraw");
+				System.out.println("2.deposit");
+				System.out.println("3.check Balance");
+				System.out.println("Please chose from above option");
+				int ch=in.nextInt();
+				if(ch==1)
+				{
+					System.out.println("How much amount want to withdraw");
+					double amount=in.nextDouble();
+					H.withdraw(amount);
+				}
+				else if(ch==2)
+				{
+					System.out.println("How much amount want to deposit");
+					double amount=in.nextDouble();
+					H.deposit(amount);
+				}
+				else if(ch==3)
+				{
+					H.checkBalance();
+				}
+				else
+				{
+					System.out.println("Invalid option please chose from 1-2");
+			
+	            }
+			}
+			else if(choice==3)
+			{
+				System.out.println("1.withdraw");
+				System.out.println("2.deposit");
+				System.out.println("3.check Balance");
+				System.out.println("Please chose from above option");
+				int ch=in.nextInt();
+				if(ch==1)
+				{
+					System.out.println("How much amount want to withdraw");
+					double amount=in.nextDouble();
+					A.withdraw(amount);
+				}
+				else if(ch==2)
+				{
+					System.out.println("How much amount want to deposit");
+					double amount=in.nextDouble();
+					A.deposit(amount);
+				}
+				else if(ch==3)
+				{
+					A.checkBalance();
+				}
+				else
+				{
+					System.out.println("Invalid option please chose from 1-2");
+			
+	      }
+			}
+		}
+	}
+}
+ 
+ 
